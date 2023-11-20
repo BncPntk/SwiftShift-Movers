@@ -1,10 +1,12 @@
 export default function Button({
   children,
   customClasses = "bg-violet-900 hover:bg-violet-800",
+  customSize = "mx-4 w-[140px] md:w-[180px] ",
+  customPadding = "py-3",
 }) {
   return (
     <button
-      className={`mx-4 w-[140px] rounded-md  py-3 text-lg font-bold text-white  md:w-[180px] ${customClasses}`}
+      className={` rounded-md text-lg font-bold text-white  ${customClasses} ${customPadding} ${customSize}`}
     >
       {children}
     </button>

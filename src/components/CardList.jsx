@@ -47,7 +47,7 @@ const movingPlans = [
 
 export default function Cards() {
   return (
-    <div className="w-full px-4 py-[10rem]">
+    <div className="mx-auto w-[90%] px-4 py-[10rem] md:w-[60%] lg:w-[90%]">
       <div className="mx-auto grid max-w-[1240px] gap-8 lg:grid-cols-3">
         {movingPlans.map((plan, i) => (
           <Card

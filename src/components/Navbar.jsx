@@ -15,7 +15,7 @@ export default function Navbar() {
         alt="SwiftShift Movers"
         className="w-36 pt-4"
       />
-      <ul className="hidden w-full justify-end text-sm font-semibold md:flex lg:text-lg ">
+      <ul className="hidden w-full justify-end text-sm font-semibold md:flex lg:text-xl ">
         <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
           Home
         </li>
@@ -23,10 +23,10 @@ export default function Navbar() {
           Company
         </li>
         <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Type of Vehicles
+          I'm moving
         </li>
         <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Our Team
+          Plans
         </li>
         <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
           Contact
@@ -34,13 +34,13 @@ export default function Navbar() {
       </ul>
 
       <div onClick={handleNav} className="block cursor-pointer md:hidden">
-        {!nav ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
+        {nav ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
       </div>
 
       <div
         className={
-          !nav
-            ? "fixed left-0 top-0 h-full w-[60%] border-r border-r-violet-900 bg-[#f3f1ff] duration-500 ease-in-out md:hidden"
+          nav
+            ? "fixed left-0 top-0 h-full w-[60%] border-r border-r-violet-900 bg-[#f3f1ff] duration-300 ease-in-out"
             : "fixed left-[-100%]"
         }
       >
@@ -48,9 +48,9 @@ export default function Navbar() {
           <li className="cursor-pointer p-4 hover:text-violet-900">Home</li>
           <li className="cursor-pointer p-4 hover:text-violet-900">Company</li>
           <li className="cursor-pointer p-4 hover:text-violet-900">
-            Type of Vehicles
+            I'm moving
           </li>
-          <li className="cursor-pointer p-4 hover:text-violet-900">Our Team</li>
+          <li className="cursor-pointer p-4 hover:text-violet-900">Plans</li>
           <li className="cursor-pointer p-4">Contact</li>
         </ul>
       </div>
