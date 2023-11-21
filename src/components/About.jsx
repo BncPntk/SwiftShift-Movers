@@ -21,7 +21,7 @@ export default function About() {
   }
 
   return (
-    <section className="mb-24 px-6 md:mb-36 md:p-8">
+    <section id='about' className="px-6 mb-24 md:mb-36 md:p-8">
       <div className="max-w[1240px] mx-auto grid w-full gap-4 md:grid-cols-2">
         <img
           className="mx-auto my-auto w-[800px]"

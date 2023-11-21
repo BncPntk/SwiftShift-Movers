@@ -30,3 +30,13 @@ code {
   font-family: rubik, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4c1d95;
+  border-radius: 6px;
+}

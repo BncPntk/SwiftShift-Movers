@@ -7,7 +7,10 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="max-w-100 mx-auto grid gap-4 bg-violet-900 px-4 py-8 lg:grid-cols-3 lg:px-16 2xl:px-96">
+    <footer
+      id="contact"
+      className="max-w-100 mx-auto grid gap-4 bg-violet-900 px-4 py-8 lg:grid-cols-3 lg:px-16 2xl:px-96"
+    >
       <div className="">
         <h1>
           {" "}

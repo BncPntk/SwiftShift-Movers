@@ -21,15 +21,20 @@ const countries = [
   "Hungary",
 ];
 
-export default function Form() {
+export default function Form({ movingPlans, selectedPlan, setSelectedPlan }) {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const currDate = new Date().toISOString().slice(0, 10);
   const dateTime = currDate + "T00:00";
   const defaultCountry = "Hungary";
 
+  function handleBook(e) {
+    e.preventDefault();
+    setShowSuccess(!showSuccess);
+  }
+
   return (
-    <section className="mb-24 md:mb-36 md:p-8">
+    <section id="moving" className="mb-24 md:mb-36 md:p-8">
       <div className="mx-auto max-w-[1300px] rounded bg-violet-100 px-4 py-4 shadow-md shadow-violet-200">
         <form>
           <div className="mb-12 flex flex-wrap items-center xl:flex-nowrap ">
@@ -58,13 +63,15 @@ export default function Form() {
                 <span className="text-[20px] text-red-700">*</span>
               </span>
               <select
-                name=""
-                id=""
                 className="h-[40px] w-[320px] rounded border border-slate-400 px-3 focus:outline-none focus:ring focus:ring-violet-300"
+                value={selectedPlan}
+                onChange={(e) => setSelectedPlan(e.target.value)}
               >
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
+                {movingPlans.map((plan, i) => (
+                  <option value={plan.planType} key={i}>
+                    {plan.planType}
+                  </option>
+                ))}
               </select>
             </label>
             <label className="mx-auto mb-6 block">
@@ -91,7 +98,6 @@ export default function Form() {
               </span>
               <input
                 type="text"
-                required
                 className="h-[40px] w-[320px] rounded border border-slate-400 px-3 focus:outline-none focus:ring focus:ring-violet-300"
               />
             </label>
@@ -115,13 +121,16 @@ export default function Form() {
               </span>
               <input
                 type="text"
-                required
                 className="h-[40px] w-[320px] rounded border border-slate-400 px-3 focus:outline-none focus:ring focus:ring-violet-300"
               />
             </label>
             <label className="mb-6 flex items-end justify-center px-9 xl:justify-end">
               <div className="p-o">
-                <Button customSize={"w-[275px]"} customPadding={"py-2"}>
+                <Button
+                  onClick={(e) => handleBook(e)}
+                  customSize={"w-[275px]"}
+                  customPadding={"py-2"}
+                >
                   Book
                 </Button>
               </div>

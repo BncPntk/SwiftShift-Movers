@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link as ScrollLink } from "react-scroll";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -8,29 +9,51 @@ export default function Navbar() {
     setNav(!nav);
   }
 
+  function handleScroll() {
+    const scrollTop = window.scrollY;
+    const navbar = document.querySelector("#navbar");
+    if (scrollTop > 0) {
+      navbar.classList.add("shadow-md");
+    } else {
+      navbar.classList.remove("shadow-md");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const sectionIds = ["home", "moving", "plans", "about", "contact"];
+
   return (
-    <nav className="mx-auto flex h-24 max-w-[1300px] items-center justify-between px-8 lg:max-w-[1800px]">
+    <nav
+      id="navbar"
+      className="sticky top-0 z-10 mx-auto flex h-24 items-center justify-between bg-violet-50 px-8"
+    >
       <img
         src={require("../assets/icon_and_logo/ssm_logo.png")}
         alt="SwiftShift Movers"
         className="w-36 pt-4"
       />
       <ul className="hidden w-full justify-end text-sm font-semibold md:flex lg:text-xl ">
-        <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Home
-        </li>
-        <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Company
-        </li>
-        <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          I'm moving
-        </li>
-        <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Plans
-        </li>
-        <li className="cursor-pointer border-b-4 border-transparent p-4 hover:border-violet-900 hover:text-violet-900">
-          Contact
-        </li>
+        {sectionIds.map((id) => (
+          <li
+            key={id}
+            className="cursor-pointer border-b-4 border-transparent px-1 py-4 hover:border-violet-900 hover:text-violet-900"
+          >
+            <ScrollLink
+              to={id}
+              smooth={true}
+              duration={500}
+              className="px-6 py-5"
+            >
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </ScrollLink>
+          </li>
+        ))}
       </ul>
 
       <div onClick={handleNav} className="block cursor-pointer md:hidden">
@@ -45,13 +68,13 @@ export default function Navbar() {
         }
       >
         <ul className="p-4 text-lg font-semibold uppercase">
-          <li className="cursor-pointer p-4 hover:text-violet-900">Home</li>
-          <li className="cursor-pointer p-4 hover:text-violet-900">Company</li>
-          <li className="cursor-pointer p-4 hover:text-violet-900">
-            I'm moving
-          </li>
-          <li className="cursor-pointer p-4 hover:text-violet-900">Plans</li>
-          <li className="cursor-pointer p-4">Contact</li>
+          {sectionIds.map((id) => (
+            <li key={id} className="cursor-pointer p-4 hover:text-violet-900">
+              <ScrollLink to={id} smooth={true} duration={500}>
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </ScrollLink>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

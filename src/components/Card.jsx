@@ -1,6 +1,14 @@
 import Button from "./Button";
+import { Link as ScrollLink } from "react-scroll";
 
-export default function Card({ img, type, price, truckSize, features }) {
+export default function Card({
+  img,
+  type,
+  price,
+  truckSize,
+  features,
+  setSelectedPlan,
+}) {
   return (
     <div
       className={
@@ -22,11 +30,30 @@ export default function Card({ img, type, price, truckSize, features }) {
       </div>
       <div className="mx-auto mt-auto pt-6">
         {type === "Executive Plan" ? (
-          <Button customClasses="bg-primaryOrange hover:bg-secondaryOrange">
-            Select
-          </Button>
+          <ScrollLink
+            to="moving"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-50}
+          >
+            <Button
+              customClasses="bg-primaryOrange hover:bg-secondaryOrange"
+              onClick={() => setSelectedPlan(type)}
+            >
+              Select
+            </Button>
+          </ScrollLink>
         ) : (
-          <Button>Select </Button>
+          <ScrollLink
+            to="moving"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-50}
+          >
+            <Button onClick={() => setSelectedPlan(type)}>Select</Button>
+          </ScrollLink>
         )}
       </div>
     </div>

@@ -2,7 +2,7 @@ import Button from "./Button";
 
 export default function Hero() {
   return (
-    <section className="md:pt-16 2xl:pt-0">
+    <section id="home" className="md:pt-16 2xl:pt-0">
       <div className="mx-auto grid h-screen w-full max-w-[1240px] gap-x-4 px-4 text-center md:justify-center md:px-8 lg:grid-cols-2 lg:content-center">
         <div className="align-center flex flex-col justify-center lg:mt-[-12rem]">
           {" "}
