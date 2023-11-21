@@ -3,7 +3,7 @@
 ## Getting Started
 SwiftShift Movers is a modern website I made for learning purposes and for practicing development skills in React and Tailwind CSS. This fictional moving company offers a sleek and user-friendly interface to explore services, understand the moving process, and get in touch.
 
-
+![alt SwiftShift Movers hero page](src/assets/images/preview_for_github.png)
 
 ## Website
 [live demo](https://bncpntk-swiftshift-movers.netlify.app/)
