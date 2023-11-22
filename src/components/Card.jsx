@@ -8,6 +8,7 @@ export default function Card({
   truckSize,
   features,
   setSelectedPlan,
+  offset,
 }) {
   return (
     <div
@@ -35,7 +36,7 @@ export default function Card({
             smooth={true}
             duration={500}
             spy={true}
-            offset={-50}
+            offset={offset}
           >
             <Button
               customClasses="bg-primaryOrange hover:bg-secondaryOrange"
@@ -50,7 +51,7 @@ export default function Card({
             smooth={true}
             duration={500}
             spy={true}
-            offset={-50}
+            offset={offset}
           >
             <Button onClick={() => setSelectedPlan(type)}>Select</Button>
           </ScrollLink>

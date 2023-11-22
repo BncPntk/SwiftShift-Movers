@@ -49,6 +49,7 @@ export default function Navbar() {
               smooth={true}
               duration={500}
               className="px-6 py-5"
+              offset={id === "about" || id === "moving" ? -200 : 0}
             >
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </ScrollLink>

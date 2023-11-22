@@ -5,10 +5,11 @@ import Steps from "./components/Steps";
 import CardList from "./components/CardList";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import { useState } from "react";
 import EconomyImg from "./assets/images/tier1.png";
 import StandardImg from "./assets/images/tier2.png";
 import ExecutiveImg from "./assets/images/tier3.png";
+
+import { useState, useEffect } from "react";
 
 const movingPlans = [
   {
@@ -54,18 +55,39 @@ const movingPlans = [
 
 export default function App() {
   const [selectedPlan, setSelectedPlan] = useState(movingPlans[0].planType);
+  const [offset, setOffset] = useState(0);
+
+  // desktop / mobile offset
+  function handleResize() {
+    const newOffset = window.innerWidth <= 767 ? -100 : -220;
+    setOffset(() => newOffset);
+  }
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero offset={offset} />
       <Form
         selectedPlan={selectedPlan}
         setSelectedPlan={setSelectedPlan}
         movingPlans={movingPlans}
       />
       <Steps />
-      <CardList setSelectedPlan={setSelectedPlan} movingPlans={movingPlans} />
+      <CardList
+        setSelectedPlan={setSelectedPlan}
+        movingPlans={movingPlans}
+        offset={offset}
+      />
       <About />
       <Footer />
     </>

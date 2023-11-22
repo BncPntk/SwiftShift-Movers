@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-export default function Cards({ movingPlans, setSelectedPlan }) {
+export default function Cards({ movingPlans, setSelectedPlan, offset }) {
   return (
     <div
       id="plans"
@@ -16,6 +16,7 @@ export default function Cards({ movingPlans, setSelectedPlan }) {
             truckSize={plan.truckSize}
             features={plan.features}
             setSelectedPlan={setSelectedPlan}
+            offset={offset}
           ></Card>
         ))}
       </div>

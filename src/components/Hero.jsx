@@ -1,6 +1,8 @@
 import Button from "./Button";
 
-export default function Hero() {
+import { Link as ScrollLink } from "react-scroll";
+
+export default function Hero({ offset }) {
   return (
     <section id="home" className="md:pt-16 2xl:pt-0">
       <div className="mx-auto grid h-screen w-full max-w-[1240px] gap-x-4 px-4 text-center md:justify-center md:px-8 lg:grid-cols-2 lg:content-center">
@@ -18,10 +20,26 @@ export default function Hero() {
             there safely.
           </div>
           <div className="mx-auto flex pt-10">
-            <Button>Let's Move</Button>
-            <Button customClasses="bg-primaryOrange hover:bg-secondaryOrange">
-              Learn More
-            </Button>
+            <ScrollLink
+              to="moving"
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={offset}
+            >
+              <Button>Let's Move</Button>
+            </ScrollLink>
+            <ScrollLink
+              to="about"
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={offset}
+            >
+              <Button customClasses="bg-primaryOrange hover:bg-secondaryOrange">
+                Learn More
+              </Button>
+            </ScrollLink>
           </div>
         </div>
         <div>
