@@ -33,7 +33,6 @@ export default function Form({ movingPlans, selectedPlan, setSelectedPlan }) {
   const [showError, setShowError] = useState(false);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [isBooked, setIsBooked] = useState(false);
 
   const defaultCountry = "Hungary";
 
@@ -42,11 +41,9 @@ export default function Form({ movingPlans, selectedPlan, setSelectedPlan }) {
       if (!addressIsValid || !dateIsValid || !phoneIsValid) {
         setShowSuccess(false);
         setShowError(true);
-        setIsBooked(false);
       } else {
         setShowSuccess(true);
         setShowError(false);
-        setIsBooked(true);
       }
     }
   }, [addressIsValid, dateIsValid, phoneIsValid, formSubmitted]);
@@ -83,7 +80,6 @@ export default function Form({ movingPlans, selectedPlan, setSelectedPlan }) {
                     size={18}
                     onClick={() => {
                       setShowSuccess(false);
-                      setIsBooked(false);
                     }}
                   />
                 </span>
